@@ -2,15 +2,18 @@ import { useState } from 'react';
 import AddCategory from './components/AddCategory';
 
 export const GifApp = () => {
-  const [categories, setCategories] = useState(['Category 0']);
+  const [categories, setCategories] = useState([]);
 
-  console.log(categories);
+  const onSetCategories = (newCategory) => {
+    console.log(newCategory);
+    setCategories((prevCategories) => [newCategory, ...prevCategories]);
+  };
 
   return (
     <>
       <h1>Gif App</h1>
 
-      <AddCategory setCategories={setCategories} />
+      <AddCategory onSetCategories={onSetCategories} />
 
       <ol>
         {categories.map((el, i) => {
